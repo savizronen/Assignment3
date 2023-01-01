@@ -45,14 +45,27 @@ def filter_files(*args, ext='.csv'):  # ADD INPUT
                 lst.append(file_name)
     return lst
 
+
 # Q3.a
-def break_digits():  # ADD INPUT
-    pass
+def break_digits(num):  # ADD INPUT
+    lst_reverse = []
+    while num != 0:
+        number = num % 10
+        lst_reverse.append(number)
+        num = int(num / 10)
+    return lst_reverse
 
 
 # Q3.b
-def list2num():  # ADD INPUT
-    pass
+def list2num(lst):  # ADD INPUT
+    num = 0
+    if len(lst) != 0:
+        for digit in lst[::-1]:
+            num += int(digit)
+            num = num * 10
+    else:
+        return []
+    return num // 10
 
 
 # Q3.c
@@ -81,11 +94,11 @@ def main():
     print(f"text files: {txt_files}")
 
     # Q3.a
-    # num = 1357
-    # print(f"{num} is broken into {break_digits(num)}")
+    num = 1357
+    print(f"{num} is broken into {break_digits(num)}")
     # Q3.b
-    # l = [1,4,5,6]
-    # print(f"{l} is assembled into {list2num(l)}")
+    l = [1, 4, 5, 6]
+    print(f"{l} is assembled into {list2num(l)}")
     # Q3.c
     # n1 = 185
     # n2 = 437
