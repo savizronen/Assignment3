@@ -23,7 +23,7 @@ def mod_chrs(I, n=0):  # ADD INPUT
             if (ord(chrs[i]) + n) > 122:
                 distance_to_z = 122 - ord(chrs[i])
                 n = n - distance_to_z
-                return chr(97 + n-1)
+                return chr(97 + n - 1)
             return chr(ord(chrs[i]) + n)
 
 
@@ -36,9 +36,14 @@ def mod_word(s, n):  # ADD INPUT
 
 
 # Q2
-def filter_files():  # ADD INPUT
-    pass
-
+def filter_files(*args, ext='.csv'):  # ADD INPUT
+    lst = []
+    for file_name in args:
+        if len(file_name) >= 4:
+            file_name_ext = file_name[len(file_name) - 4:len(file_name)]
+            if file_name_ext == ext:
+                lst.append(file_name)
+    return lst
 
 # Q3.a
 def break_digits():  # ADD INPUT
@@ -68,12 +73,12 @@ def main():
     print(f"'{word}' is modified to '{mod_word(word, 2)}' with n=2")
 
     # Q2
-    # csv_files = filter_files("file.csv","file2.txt","file3.doc","file4.csv")
-    # print(f"csv files: {csv_files}")
-    # doc_files = filter_files("file.csv","file2.txt","file3.doc","file4.csv",ext = '.doc')
-    # print(f"doc files: {doc_files}")
-    # txt_files = filter_files("file.csv","file2.txt","file3.doc","file4.csv",ext = '.txt')
-    # print(f"text files: {txt_files}")
+    csv_files = filter_files("file.csv", "file2.txt", "file3.doc", "file4.csv")
+    print(f"csv files: {csv_files}")
+    doc_files = filter_files("file.csv", "file2.txt", "file3.doc", "file4.csv", ext='.doc')
+    print(f"doc files: {doc_files}")
+    txt_files = filter_files("file.csv", "file2.txt", "file3.doc", "file4.csv", ext='.txt')
+    print(f"text files: {txt_files}")
 
     # Q3.a
     # num = 1357
