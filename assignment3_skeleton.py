@@ -69,8 +69,28 @@ def list2num(lst):  # ADD INPUT
 
 
 # Q3.c
-def min_nums():  # ADD INPUT
-    pass
+def min_nums(x, y):  # ADD INPUT
+    res_lst = []
+    x_lst = break_digits(x)
+    y_lst = break_digits(y)
+    if len(x_lst) != len(y_lst):
+        print("digits are not of the same size")
+    counter_arry = [0] * 10
+    for i in x_lst:
+        counter_arry[i] += 1
+    for i in y_lst:
+        counter_arry[i] += 1
+    counter_digit = len(x_lst)
+    for i in range(len(counter_arry)):
+        if counter_arry[i] > 0:
+            res_lst.append(i)
+            counter_digit -= 1
+            counter_arry[i] -= 1
+        if counter_digit == 0:
+            res_lst = res_lst[::-1]
+            return list2num(res_lst)
+
+    return None
 
 
 def main():
@@ -100,11 +120,11 @@ def main():
     l = [1, 4, 5, 6]
     print(f"{l} is assembled into {list2num(l)}")
     # Q3.c
-    # n1 = 185
-    # n2 = 437
-    # print(f"from {n1} and {n2} you get the minimal valued digits: {min_nums(n1,n2)}")
+    n1 = 185
+    n2 = 437
+    print(f"from {n1} and {n2} you get the minimal valued digits: {min_nums(n1, n2)}")
     # unequal size test
-    # min_nums(1,123)
+    min_nums(1, 123)
     return
 
 
